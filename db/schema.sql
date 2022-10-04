@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS projTwo_db;
+CREATE DATABASE projTwo_db;
