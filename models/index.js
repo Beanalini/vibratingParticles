@@ -25,3 +25,6 @@ Appointment.belongsTo(Donor, {
     foreignKey: 'donor_id',    
 });
 
+
+module.exports = { Donor, BloodType, Appointment }
+

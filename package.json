@@ -8,7 +8,7 @@
     "start": "node server.js",
     "seed": "node seeds/seed.js"
   },
-  "author": "\"Jos B, Micheal Munn, Debra Constantinou and TBD\",",
+  "author": "\"Jos B, Micheal Munn, Debra Constantinou and Amal Hirsi\",",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",

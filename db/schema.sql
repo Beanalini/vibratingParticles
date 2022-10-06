@@ -1,2 +1,3 @@
-DROP DATABASE IF EXISTS projTwo_db;
-CREATE DATABASE projTwo_db;
+DROP DATABASE IF EXISTS bloodTracker_db;
+CREATE DATABASE bloodTracker_db;
+
