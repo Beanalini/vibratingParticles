@@ -1,0 +1,24 @@
+[
+  {
+    "donor_id":1,
+    "date": "2022-03-23",
+    "time": "09:30",
+    "attended": true,
+    "amount_dontated": 470
+  },
+  {
+    "donor_id":2,
+    "date": "2022-10-31",
+    "time": "14:00",
+    "attended": null,
+    "amount_dontated": 300
+  },
+  {
+    "donor_id":3,
+    "date": "2022-07-10",
+    "time": "11:00",
+    "attended": true,
+    "amount_dontated": 400
+  }
+]
+
