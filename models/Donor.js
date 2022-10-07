@@ -37,7 +37,7 @@ Donor.init(
         },
       },
       contact_num: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: true,
         unique: true,
       },
@@ -59,7 +59,16 @@ Donor.init(
         unique: true,
         validate: {
           isEmail: true,
-        },
+        }
+      },
+        blood_type: {
+          type: DataTypes.STRING,
+          allowNull: false
+      },      
+      date_created: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
       },
       
     },
