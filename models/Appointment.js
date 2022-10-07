@@ -14,7 +14,7 @@ Appointment.init(
         primaryKey: true,
         autoIncrement: true
       },
-      doner_id: {
+      donor_id: {
         type: DataTypes.INTEGER,
         refernces:{
             model:'donor',
@@ -38,7 +38,12 @@ Appointment.init(
       amount_donated: {
         type: DataTypes.DECIMAL,
         allowNull: true
-      },            
+      },    
+      date_created: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
+      },        
     },
     {
       sequelize,

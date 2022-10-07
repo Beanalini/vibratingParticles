@@ -9,7 +9,8 @@
     "sex": "male",
     "dob":"1983-09-23",
     "age":39, 
-    "email": "taz@hotmail.com"
+    "email": "taz@hotmail.com",
+    "blood_type":"AB+" 
   },
   {
     "donor_num":"1000000022",
@@ -21,7 +22,8 @@
     "sex": "female",
     "dob":"2000-03-05",
     "age":22,
-    "email": "swift@bt.com"
+    "email": "swift@bt.com",
+    "blood_type":"O-"
   },
   {
     "donor_num":"1000000022",
@@ -33,7 +35,8 @@
     "sex": "male",
     "dob":"1975-10-03",
     "age":47,
-    "email": "mart@gmail.com"
+    "email": "mart@gmail.com",
+    "blood_type":"A-"
     
   }
 ]
