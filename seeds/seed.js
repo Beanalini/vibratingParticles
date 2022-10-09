@@ -11,7 +11,7 @@ const seedAll = async () => {
   await sequelize.sync({ force: true });
 
   const donors = await Donor.bulkCreate(donorData, {
-    //individualHooks: true,
+    individualHooks: true,
     returning: true,
   });
 
