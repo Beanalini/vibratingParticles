@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 
 //TO DO: Get admin data to display on board e.g. name, role, location
 
-router.get('/adminData', withAuth, async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     
 
 
