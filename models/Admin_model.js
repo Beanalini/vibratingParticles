@@ -14,9 +14,13 @@ Admin.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncvrement: true
+      autoIncrement: true
     },
-    donor_num: {
+    employee_num: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    role: {
       type: DataTypes.STRING,
       allowNull: false
     },   
@@ -44,18 +48,6 @@ Admin.init(
       allowNull: true,
       unique: true,
     },
-    sex: {
-      type: DataTypes.STRING
-
-    },      
-    dob: {
-      type: DataTypes.DATE,
-      allowNull: false
-    },
-    age: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -81,7 +73,7 @@ Admin.init(
     sequelize,
     timestamps: false,
     freezeTableName: true,
-    modelName: 'Admin',
+    modelName: 'admin',
   }
 );
 
