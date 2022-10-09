@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    --backgroundcolor:#990000 ;
+    --secondcolor: #111109;
+    --textcolor: #a6a6a6;
+    background-color: #990000;
+    color: #a6a6a6;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+}
+
+header {
+    display: grid;
+    text-align: center;
+    background-color: var(--secondcolor);
+    font-style: bold;
+    font-size: 250%;    
+}
