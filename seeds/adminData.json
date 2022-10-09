@@ -1,6 +1,4 @@
-const { Admin } = require('../models');
-
-const adminData = [
+[
     {
       "employee_num": 1,
       "role": "Admin Manager",
@@ -9,7 +7,7 @@ const adminData = [
       "location": "Birmingham",
       "password": "",
       "contact_num": "01211234567",
-      "email": "s-smith@email.com"
+      "email": "s.smith@email.com"
     },
     {
       "employee_num": 2,
@@ -19,7 +17,7 @@ const adminData = [
       "location": "Manchester",
       "password": "",
       "contact_num": "01217654321",
-      "email": "m-jones@email.com"
+      "email": "m.jones@email.com"
       },
     {
       "employee_num": 3,
@@ -29,7 +27,7 @@ const adminData = [
       "location": "Edinbourgh",
       "password": "",
       "contact_num": "01611234567",
-      "email": "g-atkins@email.com"
+      "email": "g.atkins@email.com"
       },
       {
       "employee_num": 4,
@@ -39,7 +37,7 @@ const adminData = [
       "location": "Bristol",
       "password": "",
       "contact_num": "01811234567",
-      "email": "p-campbell@email.com"
+      "email": "p.campbell@email.com"
       },
     {
       "employee_num": 5,
@@ -49,10 +47,7 @@ const adminData = [
       "location": "London",
       "password": "",
       "contact_num": "02071234567",
-      "email": "m-rodriguez@email.com"
-      },
-  ]
+      "email": "m.rodriguez@email.com"
+      }
+ ]
 
-const seedAdminData = () => Admin.bulkCreate(adminData);
-
-module.exports = seedAdminData;

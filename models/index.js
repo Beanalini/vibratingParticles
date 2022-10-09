@@ -1,5 +1,6 @@
 const Donor = require('./Donor');
 const Appointment = require('./Appointment');
+const Admin = require('./Admin');
 
 
 
@@ -16,5 +17,5 @@ Appointment.belongsTo(Donor, {
 });
 
 
-module.exports = { Donor, Appointment }
+module.exports = { Donor, Appointment, Admin };
 

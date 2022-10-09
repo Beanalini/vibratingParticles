@@ -73,7 +73,8 @@ Admin.init(
     sequelize,
     timestamps: false,
     freezeTableName: true,
-    modelName: 'admin',
+    underscored: true,
+    modelName: 'admin'
   }
 );
 
