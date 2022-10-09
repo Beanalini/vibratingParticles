@@ -3,7 +3,7 @@ const { Donor, Appointment, Admin } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
-//TO DO: Get admin data to display on board e.g. name, role, location
+//TO DO: Get admin data to display on board e.g. name, role, location, employee ID
 
 router.get('/adminData', withAuth, async (req, res) => {
     
