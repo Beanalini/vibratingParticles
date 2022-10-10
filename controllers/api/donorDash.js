@@ -34,12 +34,12 @@ router.get('/', async (req, res) => {
 
   /*TO DO:  appointments in the last 12 months order by date and where date is older than current date*/
   router.get('/appointmentHist', withAuth, async (req, res) => {
-    try {
+    /*try {
       const donorData = await Appointment.findByPk(req.session.date, req.session.time {
 
 
       } )
-    }
+    }*/
     
 
 
@@ -48,11 +48,11 @@ router.get('/', async (req, res) => {
   //TO DO: next appointment
 
   router.get('/appointmentNext', withAuth, async (req, res) => {
-    try {
+    /*try {
       const donorData = await Appointment.findByPk(req.session.date, req.session.time {
 
       })
-    }
+    }*/
 
 
 });
