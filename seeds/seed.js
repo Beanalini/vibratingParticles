@@ -1,8 +1,9 @@
 const sequelize = require('../config/connection');
-const { Donor, Appointment } = require('../models');
+const { Donor, Appointment, Admin } = require('../models');
 
 const donorData = require('./donorData.json');
 const appointmentData = require('./appointmentData.json');
+const adminData = require('./adminData.json');
 
 
 
@@ -20,6 +21,10 @@ const seedAll = async () => {
     returning: true,
   });
 
+  const admin = await Admin.bulkCreate(adminData, {
+    //individualHooks: true,
+    returning: true,
+  });
      
   process.exit(0);
 };
