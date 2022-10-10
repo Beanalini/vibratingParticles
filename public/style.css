@@ -1,5 +1,4 @@
 * {
-    box-sizing: border-box;
     padding: 0;
     margin: 0;
     --backgroundcolor:#990000 ;
@@ -12,7 +11,14 @@
 html,
 body {
     scroll-behavior: smooth;
+    min-height: 100vh; 
+    background-color: var(--backgroundcolor); 
 }
+
+#dashboard {
+    background-color: var(--secondcolor);
+}
+
 
 header {
     display: grid;
@@ -21,3 +27,4 @@ header {
     font-style: bold;
     font-size: 250%;    
 }
+
