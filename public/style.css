@@ -15,6 +15,9 @@ body {
     background-color: var(--backgroundcolor); 
 }
 
+#dashboard {
+    background-color: var(--secondcolor);
+}
 
 
 header {
