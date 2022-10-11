@@ -45,10 +45,13 @@ router.post('/', async (req, res) => {
 });
 
 
+/*{
+  "email": taz@hotmail.com,
+  "password": "apple101"
+} */
 
 
-
-
+//Donor Login
   router.post('/login', async (req, res) => {
     try {
       console.log(req.body);
@@ -86,12 +89,17 @@ router.post('/', async (req, res) => {
   });
 
 
-//TO DO: Log out
+//Donor  Log out
 router.post('/logout', (req, res) => {
-  
-
-
-
+  router.post('/logout', (req, res) => {
+    if (req.session.logged_in) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
+  });
   
 });
 

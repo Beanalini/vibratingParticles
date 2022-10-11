@@ -7,7 +7,7 @@ const withAuth = require('../../utils/auth');
 
 router.get('/data', withAuth, async (req, res) => {
   try {
-    const adminData = await Admin.findByPk(req.session.findAll() {
+    const adminData = await Admin.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] }
 
     });
@@ -20,30 +20,60 @@ router.get('/data', withAuth, async (req, res) => {
 
 //TO DO Get all patients by certain blood type
 
-router.get('/adminData/bloodType', withAuth, async (req, res) => {
-    
-  try {
-      const donorData = await bloodType.findOne({
-        where: {id: req.query.bloodType,
-      });
-      res.render ('bloodtype', {bloodtype});
-    } catch (err) {
-      console.log(error);
-      res.status(500).json(err);
-    }
-});
+//[1] ADMIN: returns all donors in a location: WORKING
+/*{
+  "location": "Nottingham"
+}*/
+router.post('/donorLoc', withAuth, async (req, res) => {
   
-//TO DO: view patient by ID
+  try {    
 
-//TO DO: update donor's record to indicate they attended their appoinment
+       const donorData = await Donor.findAll({
+        attributes: { exclude: ['password'] },
+        where:{location: req.body.location}
+        
+        });
+    res.status(200).json(donorData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-//TO DO: update a donor's record to indicate how much blood they donated
+//[2] ADMIN: returns all donors and their appointment history WORKING
+router.get('/histLoc', withAuth, async (req, res) => {
+ 
+  try {      
 
-//TO DO: view patients donating today
+       const donorData = await Donor.findAll({
+        include: [{
+            model: Appointment,  as: "appointments"}]
+        });
+    res.status(200).json(donorData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-//TO DO: create new appointment
+//[3] ADMIN Donors by blood type and location: WORKING 
+/*{
+    "blood_type": "A-",
+    "location": "Leeds"
+} */
 
-//TO DO: Delete donor's account
+router.post('/locBlood', withAuth, async (req, res) => {
+  
+  try {  
+      const donorData = await Donor.findAll({
+      where:{location: req.body.location, blood_type: req.body.blood_type}
+      /*include: [{
+          model: Appointment }]*/
+      });
+    res.status(200).json(donorData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 
 
