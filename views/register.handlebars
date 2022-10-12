@@ -2,18 +2,18 @@
         <div class="row justify-space-between-md">
             <div class="register-card">
                 <h2 class="page-title">Register to Become a Blood Donor</h2>
-                <form class="form signup-form">
+                <form class="form signup-form" id="register">
                     <div class="form-group">
                         <label for="username-signup">First Name:</label>
-                        <input class="form-input" type="text" id="username-signup" />
+                        <input class="form-input" type="text" id="first-name" />
                     </div>
                     <div class="form-group">
                         <label for="username-signup">Last Name:</label>
-                        <input class="form-input" type="text" id="username-signup" />
+                        <input class="form-input" type="text" id="last-name" />
                     </div>
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="inputGroupSelect01">Location:</label>
-                        <select class="form-select" id="inputGroupSelect01">
+                        <select class="form-select" id="location">
                         <option value="1">Birmingham</option>
                         <option value="2">Bradford</option>
                         <option value="3">Bristol</option>
@@ -43,44 +43,34 @@
                     </div>
                     <div class="form-group">
                         <label for="password-signup">Password:</label>
-                        <input class="form-input" type="password" id="password-signup" />
+                        <input class="form-input" type="password" id="pwd" />
                     </div>
                     <div class="form-group">
                         <label for="password-signup">Contact Number:</label>
-                        <input class="form-input" type="password" id="password-signup" />
+                        <input class="form-input" type="password" id="contact" />
                     </div>
-                    <fieldset class="row mb-3">
-                        <legend class="col-form-label col-sm-2 pt-0">Gender:</legend>
-                        <div class="col-sm-10">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                            <label class="form-check-label" for="gridRadios1">
-                            Female
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                            <label class="form-check-label" for="gridRadios2">
-                            Male
-                            </label>
-                        </div>
-                        </div>
-                    </fieldset>
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Gender</label>
+                        <select class="form-select" id="gender">
+                        <option value="1">Female</option>
+                        <option value="2">Male</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="password-signup">Date of Birth:</label>
-                        <input class="form-input" type="password" id="password-signup" />
+                        <input class="form-input" type="password" id="dob" />
                     </div>
                     <div class="form-group">
                         <label for="password-signup">Age:</label>
-                        <input class="form-input" type="password" id="password-signup" />
+                        <input class="form-input" type="password" id="age" />
                     </div>
                     <div class="form-group">
                         <label for="email-signup">Email:</label>
-                        <input class="form-input" type="text" id="email-signup" />
+                        <input class="form-input" type="text" id="email" />
                     </div>
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="inputGroupSelect01">Blood Type:</label>
-                        <select class="form-select" id="inputGroupSelect01">
+                        <select class="form-select" id="blood-type">
                         <option value="1">A+</option>
                         <option value="2">A-</option>
                         <option value="3">B+</option>
@@ -92,7 +82,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary" type="submit">signup</button>
+                        <button class="btn btn-primary" type="submit" id="submit">signup</button>
                     </div>
                 </form>
             </div>
