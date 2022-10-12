@@ -52,7 +52,8 @@ router.post('/', async (req, res) => {
   router.post('/login', async (req, res) => {
     try {
       console.log(req.body);
-      const donorData = await Donor.findOne({ where: { email: req.body.email } });
+      const donorData = await Donor.findOne({ where: { email: req.body.donorEmail } });
+      console.log(`Donor route: ${req.body.donorEmail}${req.body.donorPsw}`)
   
       if (!donorData) {
         console.log("email not found");
@@ -62,7 +63,7 @@ router.post('/', async (req, res) => {
         return;
       }
       //console.log("email found");
-      const validPassword = await donorData.checkPassword(req.body.password);
+      const validPassword = await donorData.checkPassword(req.body.donorPsw);
   
       if (!validPassword) {
         //console.log("password not found");
@@ -71,7 +72,8 @@ router.post('/', async (req, res) => {
           .json({ message: 'Incorrect email or password, please try again' });
         return;
       }
-        //console.log("email and password ok");
+        console.log("email and password ok");
+        console.log(`Donor ID = ${donorData.donor_num} and ${donorData.id}`);
         req.session.save(() => {
         req.session.user_id = donorData.id;
         req.session.logged_in = true;
