@@ -22,7 +22,7 @@ const seedAll = async () => {
   });
 
   const admin = await Admin.bulkCreate(adminData, {
-    //individualHooks: true,
+    individualHooks: true,
     returning: true,
   });
      

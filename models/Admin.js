@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
+const bcrypt = require('bcrypt');
 
 class Admin extends Model {
   checkPassword(loginPw) {
@@ -54,8 +54,8 @@ Admin.init(
       unique: true,
       validate: {
         isEmail: true,
-      },
-    }
+      }
+    },
   },
   {
     hooks: {
@@ -63,10 +63,8 @@ Admin.init(
           newAdminData.password = await bcrypt.hash(newAdminData.password, 10);
           return newAdminData;
         },
-        beforeUpdate: async (updatedAdminData) => {
-          if (updatedAdminData.password) {
+        beforeUpdate: async (updatedAdminData) => {          
           updatedAdminData.password = await bcrypt.hash(updatedAdminData.password, 10);
-          }
           return updatedAdminData;
         },
       },

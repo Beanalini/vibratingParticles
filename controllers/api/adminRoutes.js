@@ -5,9 +5,11 @@ const { Admin, Donor, Appointment } = require('../../models');
 router.post('/login', async (req, res) => {
   try {
     // Find the user who matches the posted e-mail address
-    const adminData = await Admin.findOne({ where: { email: req.body.email } });
-
+    const adminData = await Admin.findOne({ where: { email: req.body.adminEmail } });
+    console.log(`admin route: ${req.body.adminEmail} ${req.body.adminPsw}`)
+    console.log(`${adminData.email} ${adminData.password}`);
     if (!adminData) {
+      console.log("email not found");
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
@@ -15,9 +17,11 @@ router.post('/login', async (req, res) => {
     }
 
     // Verify the posted password with the password store in the database
-    const validPassword = await adminData.checkPassword(req.body.password);
-
+    const validPassword = await adminData.checkPassword(req.body.adminPsw);
+    console.log(adminData.password);
+    console.log(req.body.adminPsw);
     if (!validPassword) {
+      console.log("password not found");
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
@@ -29,7 +33,7 @@ router.post('/login', async (req, res) => {
       req.session.user_id = adminData.id;
       req.session.logged_in = true;
       
-      res.json({ user: adminData, message: 'You are now logged in!' });
+      res.json({ admin: adminData, message: 'You are now logged in!' });
     });
 
   } catch (err) {

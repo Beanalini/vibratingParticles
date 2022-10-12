@@ -5,9 +5,9 @@
       "first_name": "Sally",
       "last_name": "Smith",
       "location": "Birmingham",
-      "password": "",
+      "password": "orange101",
       "contact_num": "01211234567",
-      "email": "s.smith@email.com"
+      "email": "smith@email.com"
     },
     {
       "employee_num": 2,
@@ -15,7 +15,7 @@
       "first_name": "Michael",
       "last_name": "Jones",
       "location": "Manchester",
-      "password": "",
+      "password": "orange101",
       "contact_num": "01217654321",
       "email": "m.jones@email.com"
       },
@@ -25,7 +25,7 @@
       "first_name": "Gemma",
       "last_name": "Atkins",
       "location": "Edinbourgh",
-      "password": "",
+      "password": "apple101",
       "contact_num": "01611234567",
       "email": "g.atkins@email.com"
       },
@@ -35,7 +35,7 @@
       "first_name": "Peter",
       "last_name": "Campbell",
       "location": "Bristol",
-      "password": "",
+      "password": "orange101",
       "contact_num": "01811234567",
       "email": "p.campbell@email.com"
       },
@@ -45,7 +45,7 @@
       "first_name": "Maria",
       "last_name": "Rodriguez",
       "location": "London",
-      "password": "",
+      "password": "orange101",
       "contact_num": "02071234567",
       "email": "m.rodriguez@email.com"
       }
