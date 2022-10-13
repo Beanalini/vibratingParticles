@@ -1,6 +1,8 @@
 // List all the Donors
 const fetchDonorBtn = document.querySelector('#fetchdonor')
 const result = document.querySelector('#donorresults')
+const fetchhistoryBtn = document.querySelector('#fetchhistory')
+const appointmentHistory = document.querySelector('#appointmenthist')
 
 const donorData = function() {
   console.log('inside donordata function')
@@ -61,8 +63,7 @@ reviewForm.addEventListener('submit', (e) => {
 
 // List all donors and appointment history
 
-const fetchhistoryBtn = document.querySelector('#fetchhistory')
-const appointmentHistory = document.querySelector('#appointmenthist')
+
 
 const appointmentHist = function() {
 fetch('/api/adminDash/histLoc', {
@@ -84,12 +85,12 @@ fetch('/api/adminDash/histLoc', {
   });
 }
 
-fetchhistoryBtn.addEventListener('click', appointmentHist)
+//fetchhistoryBtn.addEventListener('click', appointmentHist)
 
 // List all Donors using bloodtype and location 
 
-const fetchhistoryBtn = document.querySelector('#fetchhistory')
-const appointmentHistory = document.querySelector('#appointmenthist')
+//const fetchhistoryBtn = document.querySelector('#fetchhistory')
+//const appointmentHistory = document.querySelector('#appointmenthist')
 
 const bloodtype = function() {
 fetch('/adminData/bloodType', {
@@ -113,7 +114,7 @@ fetch('/adminData/bloodType', {
 
 // Delete Donor
 
-const deleteMethod = function {
+const deleteMethod = function() {
   fetch('/api/adminDash/donorId',{
   method: 'DELETE',
   headers: {
