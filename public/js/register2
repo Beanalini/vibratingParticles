@@ -1,27 +1,23 @@
 const register = document.getElementById('register');
 
-const postNewDonor = async (newDonor) => {
+const postNewDonor = (newDonor) => 
 
-    const response = await fetch('/api/donor/', {
+    fetch('/api/donor/', {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json' 
         },
         body: JSON.stringify(newDonor),
-      });
-
-      if (response.ok) {
-        //the administrator login process was succesful
-        console.log(response.id);
-        document.location.replace('/admin');
-        alert(response.statusText);
-      }
-      else {
-        alert(response.statusText);
-      }
+      })
+      .then((res) => res.json())       
+      .then((data) => {
         
-    }
-    
+        console.log('Successful POST request:', data);        
+        return data;
+      })
+      .catch((error) => {
+        console.error('Error in POST request:', error);
+      });
 
 // Listen for when the form is submitted
 register.addEventListener('submit', (e) => {
@@ -55,6 +51,7 @@ register.addEventListener('submit', (e) => {
     };
     console.log(newDonor);
     // Call our `postReview` method to make a POST request with our `newReview` object.
-    postNewDonor(newDonor);
-      
+    postNewDonor(newDonor)
+      //.then((data) => alert(`New donor registered! Donor ID: ${data.body.donor_num}`))
+      //.catch((err) => console.error(err));
   });

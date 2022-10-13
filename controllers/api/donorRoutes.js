@@ -30,6 +30,7 @@ const withAuth = require('../../utils/auth');
 //Create Donor account: 
 router.post('/', async (req, res) => {
     try {
+      console.log("inside create donor account");
       console.log(req.body);
       const donorData = await Donor.create(req.body);
   
@@ -72,13 +73,20 @@ router.post('/', async (req, res) => {
           .json({ message: 'Incorrect email or password, please try again' });
         return;
       }
-        console.log("email and password ok");
-        console.log(`Donor ID = ${donorData.donor_num} and ${donorData.id}`);
-        req.session.save(() => {
+      console.log("email and password ok");
+      console.log(`Donor ID = ${donorData.donor_num} and ${donorData.id}`);
+     
+
+        
+      req.session.save(() => {
         req.session.user_id = donorData.id;
         req.session.logged_in = true;
-        
-        res.json({ donor: donorData, message: 'You are now logged in!' });
+        req.session.donor_user = true;        
+        console.log("saving session");
+        if(req.session.donor_user) {
+          console.log("this is a donor login");
+        }
+        res.json({ donor: donorData, message: 'You are now logged in!' });                  
       });
   
     } catch (err) {
@@ -90,11 +98,15 @@ router.post('/', async (req, res) => {
 
 //TO DO: Log out
 router.post('/logout', (req, res) => {
-  
-
-
-
-  
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      console.log("204")
+      res.status(204).end();
+    });
+  } else {
+    console.log("404");
+    res.status(404).end();
+  }
 });
 
 

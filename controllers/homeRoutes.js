@@ -58,6 +58,9 @@ router.get('/', async (req, res) => {
     res.render('admin');
   });
 
+
+  
+
 //To Do: any data that needs to be rendered for stats
 
 
