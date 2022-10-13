@@ -10,6 +10,11 @@ const withAuth = require('../../utils/auth');
 router.get('/data', async (req, res) => {
   try {
     const adminData = await Admin.findAll();
+
+    const admins = adminData.map((admin) =>
+    admin.get({ plain: true })
+  );
+    res.render('admin', { admins })
     res.status(200).json(adminData);
   } catch (err) {
     res.status(500).json(err);
@@ -21,9 +26,15 @@ router.get('/data', async (req, res) => {
 router.get('/adminData/bloodType', async (req, res) => {
     
   try {
-      const donorData = await bloodType.findOne({
-        where: {id: req.query.bloodType,
-      }});
+      const donorData = await Donor.findOne({
+        where: {
+          blood_type: req.body.blood_type,
+        }});
+
+      const donors = donorData.map((donor) =>
+      donor.get({ plain: true })
+    );
+      res.render('donor', { donors })
       res.render ('bloodtype', {bloodtype});
     } catch (err) {
       console.log(error);
@@ -38,6 +49,10 @@ router.get('/donorId', async (req, res) => {
       attributes: {exclude: ['password']}
     });
 
+    const donors = donorData.map((donor) =>
+    donor.get({ plain: true })
+  );
+  res.render('donor', { donors })
     res.status(200).json(byDonorId);
     console.log(byDonorId);
   } catch (err) {
@@ -74,6 +89,11 @@ router.get('/Record', async (req, res) => {
       },
       attributes: [[sequelize.fn('SUM', sequelize.col('amount_donated')), 'total_donated']]
     })
+
+    const donors = donorData.map((donor) =>
+    donor.get({ plain: true })
+  );
+  res.render('donor', { donors })
     res.status(200).json(totalDonated);
   } catch (err) {
     res.status(500).json(err);
@@ -136,10 +156,15 @@ router.get('/histLoc', withAuth, async (req, res) => {
  
   try {      
 
-       const donorData = await Donor.findAll({
-        include: [{
-            model: Appointment,  as: "appointments"}]
-        });
+    const donorData = await Donor.findAll({
+    include: [{
+        model: Appointment,  as: "appointments"}]
+    });
+
+    const donors = donorData.map((donor) =>
+    donor.get({ plain: true })
+  );
+    res.render('admin', { donors })
     res.status(200).json(donorData);
   } catch (err) {
     res.status(500).json(err);
