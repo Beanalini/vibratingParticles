@@ -39,30 +39,33 @@ const viewDetails = () => {
             .then((data) => {
                 console.log(data);
                 for (var i = 0; i < data.length; i++) {
+                    if (items[i] === data.id || data.date_created){
+                        continue;
+                    }
 
-    const id = document.createElement('li');
-    const donorNum = document.createElement('li');
-    const firstName = document.createElement('li');
-    const lastName = document.createElement('li');
-    const location = document.createElement('li');
-    const contactNum = document.createElement('li');
-    const sex = document.createElement('li');
-    const dob = document.createElement('li');
-    const age = document.createElement('li');
-    const email = document.createElement('li');
-    const bloodType = document.createElement('li');
+    let id = document.createElement('li');
+    let  donorNum = document.createElement('li');
+    let  firstName = document.createElement('li');
+    let  lastName = document.createElement('li');
+    let  location = document.createElement('li');
+    let  contactNum = document.createElement('li');
+    let  sex = document.createElement('li');
+    let  dob = document.createElement('li');
+    let  age = document.createElement('li');
+    let  email = document.createElement('li');
+    let  bloodType = document.createElement('li');
 
-    id.textContent = data[i].textContent;
+    id.textContent = data[i].id;
     donorNum.textContent = data[i].donor_num;
-    firstName.textContent = data[i].firstName;
-    lastName.textContent = data[i].lastName;
+    firstName.textContent = data[i].first_name;
+    lastName.textContent = data[i].last_name;
     location.textContent = data[i].location;
-    contactNum.textContent = data[i].contactNum;
+    contactNum.textContent = data[i].contact_num;
     sex.textContent = data[i].sex;
     dob.textContent = data[i].dob;
     age.textContent = data[i].age;
     email.textContent = data[i].email;
-    bloodType.textContent = data[i].bloodType;
+    bloodType.textContent = data[i].blood_type;
 
     userdetailsList.append(donorNum);
     userdetailsList.append(firstName);
@@ -81,54 +84,143 @@ const viewDetails = () => {
         
     
 
+// Prelim as yet to be made
 
-
-updateDetails = () => {
-if (updatedetailsBtn.clicked === true) {
-    fetch ('/api/donorRoutes/', {
-        method: 'PUT',
-        body: JSON.stringify({
-            donor_num,
-            first_name,
-            last_name,
-            location,
-            contact_num,
-            sex,
-            dob,
-            age,
-            email,
-            blood_type,
-        }),
-        headers: { 'Content-Type': 'application/json' },
+// updateDetails = () => {
+// if (updatedetailsBtn.clicked === true) {
+//     fetch ('/api/donorRoutes/', {
+//         method: 'PUT',
+//         body: JSON.stringify({
+//             first_name,
+//             last_name,
+//             location,
+//             contact_num,
+//             sex,
+//             dob,
+//             age,
+//             email,
+//             blood_type,
+//         }),
+//         headers: { 'Content-Type': 'application/json' },
         
-    }).then((response) => {
-        return response.json();    
-    })
-    .then((data) => {
-        for 
-    })
-}};
+//     }).then((response) => {
+//         return response.json();    
+//     })
+//     .then((data) => {
+//         console.log(data);
+//         for (var i = 0; i < data.length; i++) {
+
+//             let  donorNum = document.createElement('li');
+//             let  firstName = document.createElement('li');
+//             let  lastName = document.createElement('li');
+//             let  location = document.createElement('li');
+//             let  contactNum = document.createElement('li');
+//             let  sex = document.createElement('li');
+//             let  dob = document.createElement('li');
+//             let  age = document.createElement('li');
+//             let  email = document.createElement('li');
+//             let  bloodType = document.createElement('li');
+        
+//             id.textContent = data[i].textContent;
+//             donorNum.textContent = data[i].donor_num;
+//             firstName.textContent = data[i].firstName;
+//             lastName.textContent = data[i].lastName;
+//             location.textContent = data[i].location;
+//             contactNum.textContent = data[i].contactNum;
+//             sex.textContent = data[i].sex;
+//             dob.textContent = data[i].dob;
+//             age.textContent = data[i].age;
+//             email.textContent = data[i].email;
+//             bloodType.textContent = data[i].bloodType;
+        
+//             userdetailsList.append(donorNum);
+//             userdetailsList.append(firstName);
+//             userdetailsList.append(lastName);
+//             userdetailsList.append(location);
+//             userdetailsList.append(contactNum);
+//             userdetailsList.append(sex);
+//             userdetailsList.append(dob);
+//             userdetailsList.append(age);
+//             userdetailsList.append(email);
+//             userdetailsList.append(bloodType);
+//        }
+
+
+//     })
+// }};
 
 function apptHistory () {
     if (appthistoryBtn.clicked === true) {
-        fetch ('./api/appointmentHist')
+        fetch ('/api/donorDash/appointmentHist')
         .then((response) => {
             response.json();
         console.log(response)
     })
     .then((data) => {
         console.log(data);
+        for (var i = 0; i < data.length; i++) {
+            if (items[i] === data.id || data.donor_id || data.date_created){
+                continue
+            };
+
+    let id = document.createElement('li');
+    let  donorNum = document.createElement('li');
+    let  firstName = document.createElement('li');
+    let  lastName = document.createElement('li');
+    let  location = document.createElement('li');
+    let  contactNum = document.createElement('li');
+    let  sex = document.createElement('li');
+    let  dob = document.createElement('li');
+    let  age = document.createElement('li');
+    let  email = document.createElement('li');
+    let  bloodType = document.createElement('li');
+
+    id.textContent = data[i].id;
+    donorNum.textContent = data[i].donor_num;
+    firstName.textContent = data[i].first_name;
+    lastName.textContent = data[i].last_name;
+    location.textContent = data[i].location;
+    contactNum.textContent = data[i].contact_num;
+    sex.textContent = data[i].sex;
+    dob.textContent = data[i].dob;
+    age.textContent = data[i].age;
+    email.textContent = data[i].email;
+    bloodType.textContent = data[i].blood_type;
+
+    userdetailsList.append(donorNum);
+    userdetailsList.append(firstName);
+    userdetailsList.append(lastName);
+    userdetailsList.append(location);
+    userdetailsList.append(contactNum);
+    userdetailsList.append(sex);
+    userdetailsList.append(dob);
+    userdetailsList.append(age);
+    userdetailsList.append(email);
+    userdetailsList.append(bloodType);
     })}}
 
 
 function viewnextAppt () {
     if (viewnextapptBtn.clicked === true) {
-        fetch ('./appointmentNext')
+        fetch ('/api/donorDash/appointmentNext')
         .then((response) => {
             response.json();
-            console.log(response)
+            console.log(response);
+        }).then((data) => {
+            for (var i = 0; i < data.length; i++) {
+        if (items[i] === data.id || data.donor_id || data.date_created){
+            continue
+        };
 
-        })}};
+        let date = document.createElement('li');
+        let time = document.createElement('li');
+        let attended = document.createElement('li');
+        let amountDonated = document.createElement('li');
+
+        date.textContent = date
+
+    }};
+
         
     
 
