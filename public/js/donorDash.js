@@ -1,7 +1,7 @@
 
 
 /*****************************Donor logout******************************************************* */
-console.log("inside logout donor dash")
+
 
 const donorLogout = async () => {
     const response = await fetch('/api/donor/logout', {
@@ -23,7 +23,7 @@ const donorLogout = async () => {
   document.querySelector('#logout').addEventListener('click', donorLogout);
   /********************************************************************************************** */
 /*****************************Delete Donor******************************************************* */
-console.log("inside Delete donor account")
+
 
 const donorDelete = async () => {
     const response = await fetch('/api/donorDash/remove', {
@@ -45,12 +45,14 @@ const donorDelete = async () => {
   document.querySelector('#deleteAccount').addEventListener('click', donorDelete);
   /********************************************************************************************** */
       
+
+/*!!!!!!!these are not used here they're for the controller section  !!!!!
   // requiring route bits
 
 const router = require('express').Router();
 const { response } = require('express');
 const donorDash = require('./donorDash');
-const donorRoutes = require('./donorRoutes');
+const donorRoutes = require('./donorRoutes'); */
 
 
 
@@ -59,7 +61,7 @@ const donorRoutes = require('./donorRoutes');
 
 // Declaring variables for buttons on dashboard
 
-var viewdetailsBtn = document.getElementById('view-details');
+/*var viewdetailsBtn = document.getElementById('view-details');
 var updatedetailsBtn = document.getElementById('update-details');
 var appthistoryBtn = document.getElementById('appt-history');
 var viewnextapptBtn = document.getElementById('view-next-appt');
@@ -125,7 +127,7 @@ const viewDetails = () => {
     userdetailsList.append(email);
     userdetailsList.append(bloodType);
                 }
-            })}};
+            })}};*/
 
             
         
@@ -196,7 +198,7 @@ const viewDetails = () => {
 //     })
 // }};
 
-function apptHistory () {
+/*function apptHistory () {
     if (appthistoryBtn.clicked === true) {
         fetch ('/api/donorDash/appointmentHist')
         .then((response) => {
@@ -247,7 +249,7 @@ function apptHistory () {
     })}}
 
 
-function viewnextAppt () {
+  function viewnextAppt () {
     if (viewnextapptBtn.clicked === true) {
         fetch ('/api/donorDash/appointmentNext')
         .then((response) => {
@@ -280,4 +282,5 @@ function bloodRecord ()  {
             console.log(response)
         }
         
-    )}}};
+      }
+    }*/

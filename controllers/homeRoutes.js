@@ -65,15 +65,15 @@ router.get('/', async (req, res) => {
   });
 
   //serve admin dashboard page
-  router.get('/admin2', (req, res) => {    
+  router.get('/admin', (req, res) => {    
     if (req.session.logged_in) {
       console.log("serve admin point 1");
 
-      res.render('admin2');
+      res.render('admin');
       return;
     }
     console.log("serve admin point 2");
-    res.render('admin2');
+    res.render('admin');
   });
 /***********************************Donor Data****************************************** */
   //display donor details
