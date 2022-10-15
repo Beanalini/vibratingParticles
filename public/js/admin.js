@@ -1,26 +1,41 @@
 // List all the Donors
+const donerIDInput = document.querySelector('#donerID')
 const fetchDonorBtn = document.querySelector('#fetchdonor')
+const fetchUpdateAppointmentBtn = document.querySelector('#update-appointment')
+const fetchDeleteBtn = document.querySelector('#delete-donor-account')
 const result = document.querySelector('#donorresults')
 const fetchhistoryBtn = document.querySelector('#fetchhistory')
 const appointmentHistory = document.querySelector('#appointmenthist')
 
 const donorData = function () {
-  console.log('inside donordata function')
-  fetch('/api/adminDash/donorId', {
+  console.log(donerIDInput.value);
+
+  fetch(`/api/adminDash/donor/${donerIDInput.value}`, {
     method: 'GET',
-    body: JSON.stringify,
     headers: {
       'Content-Type': 'application/json',
     },
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      let div = document.createElement('div')
-      let newContent = document.createTextNode(JSON.stringify(data))
-      div.appendChild(newContent)
-      result.appendChild(div)
+      const formDoner = document.querySelector('#form-doner')
 
+      if (data.length) {
+        for (let index = 0; index < data.length; index++) {
+          let ul = document.createElement("ul");
+
+          for (const key in data[index]) {
+            if (Object.hasOwnProperty.call(data[index], key)) {
+              let li = document.createElement('li')
+              li.appendChild(document.createTextNode(`${key}: ${data[index][key]}`))
+              ul.appendChild(li)
+            }
+          }
+
+          formDoner.appendChild(ul);
+          formDoner.appendChild(document.createElement("hr"));
+        }
+      }
     })
     .catch((error) => {
       console.log(error)
@@ -29,6 +44,34 @@ const donorData = function () {
 }
 
 fetchDonorBtn.addEventListener('click', donorData)
+
+// Update donor account to show that they attended appointment
+
+const updateAppointment = function () {
+  const donerNumber = document.querySelector('#donerNumber').value
+  const date = document.querySelector('#donerDate').value
+  const attended = document.querySelector('#has_attended').checked
+
+  fetch(`/api/adminDash/appointment/${donerNumber}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      date: date,
+      attended: attended,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => {
+      // Succuss then show message here with js 
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+fetchUpdateAppointmentBtn.addEventListener('click', updateAppointment)
+
 
 //Add new appointment using Donor number.
 
@@ -95,40 +138,20 @@ const appointmentHist = function () {
 
 // Get donors by blood type and location
 
-const bloodtype = function () {
-  fetch('/adminData/bloodType', {
-    method: 'GET',
+
+// Delete Donor
+const deleteDonor = function () {
+  const donorNumberinput = document.querySelector('#deleteDonorNum').value;
+
+  fetch(`/api/adminDash/deleteAccount/${donorNumberinput}`, {
+    method: 'DELETE',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-type': 'application/json',
     },
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      let div = document.createElement('div')
-      let newContent = document.createTextNode(JSON.stringify(data))
-      div.appendChild(alldonors)
-      result.appendChild(div)
-    })
     .catch((error) => {
       console.error('Error:', error);
     });
 }
 
-// Delete Donor
-
-async function deleteDonor(donor_number) {
-  const deleted = await fetch('/deleteAccount', {
-    method: 'DELETE',
-    headers: {
-      'Content-type': 'application/json',
-    },
-
-  })
-
-  async function removeDonor() {
-    ocument.getElementById("delete-donor-account").addEventListener("click", removeDonor)
-
-    renderTodo()
-  };
-}
+fetchDeleteBtn.addEventListener('click', deleteDonor)

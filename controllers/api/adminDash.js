@@ -32,14 +32,16 @@ router.get('/adminData/bloodType', async (req, res) => {
 });
   
 //TO DO: view patient by ID
-router.get('/donorId', async (req, res) => {
+router.get('/donor/:id', async (req, res) => {
   try {
     const byDonorId = await Donor.findAll({
-      attributes: {exclude: ['password']}
+      attributes: {exclude: ['password']},
+      where: {
+        donor_num: req.params.id
+      }
     });
 
     res.status(200).json(byDonorId);
-    console.log(byDonorId);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -56,7 +58,7 @@ router.put('/appointment/:id', async (req, res) => {
     },
     {
       where: {
-        id: req.params.id
+        donor_id: req.params.id
       }
     }) 
       res.status(200).json(updatedDonor);
@@ -97,11 +99,11 @@ router.post('/newAppointment', async (req, res) => {
 });
 
 //TO DO: Delete donor's account
-router.delete('/deleteAccount', async (req, res) => {
+router.delete('/deleteAccount/:id', async (req, res) => {
   try {
     const deletedDonor = await Donor.destroy({
       where: {
-        donor_num: req.body.donor_num,
+        donor_num: req.params.id,
       },
     });
     res.status(200).json(deletedDonor);
