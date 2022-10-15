@@ -1,178 +1,151 @@
-
-
-
-
- <header><span id="dashboard">Administrator Dashboard</span>
-        <form>
-          <div id="adminname" class="form-group mx-sm-3 mb-2">
-            <label for="exampleFormControlInput1">Name</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-          </div>
-          <div id="Role" class="form-group mx-sm-3 mb-2">
-            <label for="exampleFormControlSelect1">Role</label>
-            <select class="form-control" id="exampleFormControlSelect1"></select>
-            </div>
-            <br></br>
-            
-      </header>
+<header><span id="dashboard">Administrator Dashboard</span>
+  <form>
+    <div id="adminname" class="form-group mx-sm-3 mb-2">
+      <label for="exampleFormControlInput1">Name</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div id="Role" class="form-group mx-sm-3 mb-2">
+      <label for="exampleFormControlSelect1">Role</label>
+      <select class="form-control" id="exampleFormControlSelect1"></select>
+    </div>
+    <div class="d-grid  d-md-flex justify-content-md-end">
+      <button class="btn btn-primary me-md-2" id="logout" type="button">Logout</button>
+    </div>
     <br></br>
+  </form>
+</header>
+<br></br>
 
 
-    <div class="card">
-        <div class="card-header">
-         SEARCH FOR DONOR
-        </div>
-            <ul class="nav flex-column" style="margin-top: 10px; padding-top: 75px">
-                <li class="nav-item">
-                  <a id="fetchdonor" class="nav-link active" href="#">Search for donor
-                    <div id="donorresults"></div>
-                </a>
+<div class="card">
+  <div class="card-header">
+    SEARCH FOR DONOR
+  </div>
+  <div id="form-doner" class="form-group">
+    <label for="username">Donor number</label>
+    <input type="username" class="form-input" id="donerID" aria-describedby="usernameHelp"
+      placeholder="Enter Donor number" />
+    <small id="donornumber" class="form-text text-muted"></small>
+    <button id="fetchdonor" value='fetchdonor'>Submit</button>
+  </div>
+</div>
+
+<br></br>
+
+<div class="card">
+  <div class="card-header">
+    UPDATE APPOINTMENT
+  </div>
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Donor number</label>
+        <input type="donornumber" class="form-control" id="donerNumber" placeholder="">
       </div>
-
-      <div class="card">
-        <div class="card-header">
-        UPDATE APPOINTMENT 
-        </div>
-        <div class="card-body">
-            <form>
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">Donor name</label>
-                  <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="">
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">Date</label>
-                  <input type="Date" class="form-control" id="exampleFormControlInput1" placeholder="">
-                </div>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option>Attended</option>
-                    <option>Not attended</option>
-                  </select>
-                </div>
-            <button type="button" class="btn btn-light" id="attended-appointment">Update Donor Account to say attended appointment</button>
-            <ul class="list-group" id="update-if-attended-appointment"></ul>
-            </div>
-        </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Date</label>
+        <input type="Date" class="form-control" id="donerDate" placeholder="">
       </div>
+      <input type='checkbox' id='has_attended' name='Attended' />
+      <label for='has_attended'>
+        Check box if donor has attended appointment
+      </label>
+      <br />
+      <button id="update-appointment" type="button">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+</div>
 
-
-      <div class="card">
-        <div class="card-header">
-        ADD NEW APPOINTMENT 
+<br></br>
+<div class="card">
+  <div class="card-header">
+    ADD NEW APPOINTMENT
+  </div>
+  <div class="card-body">
+    <form class="p-5 col-8" id="appointment-form">
+      <div class="form-group">
+        <label for="username">Donor number</label>
+        <input type="username" class="form-input" id="username" aria-describedby="usernameHelp"
+          placeholder="Enter Donor number" />
+        <small id="donornumber" class=" form-text text-muted"></small>
+        <div class="form-group">
+          <label for="Date">Product</label>
+          <input type="date" class="form-input" id="date" placeholder="date" />
         </div>
-        <div class="card-body">
-            <form class="p-5 col-8" id="appointment-form">
-                <div class="form-group">
-                  <label for="username">Donor number</label>
-                  <input
-                    type="username"
-                    class="form-input"
-                    id="username"
-                    aria-describedby="usernameHelp"
-                    placeholder="Enter Donor number"
-                  />
-                  <small id="donornumber class="form-text text-muted"
-                </div>
-                <div class="form-group">
-                  <label for="Date">Product</label>
-                  <input
-                    type="date"
-                    class="form-input"
-                    id="date"
-                    placeholder="datet"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="time">time</label>
-                  <input
-                    type="time"
-                    class="form-input"
-                    id="time"
-                    placeholder="time"
-                  />
-                </div>
+        <div class="form-group">
+          <label for="time">time</label>
+          <input type="time" class="form-input" id="time" placeholder="time" />
         </div>
-            </div>
-        </div>
+        <button id="add-appointment" type='add_appointment' value='add_appointment'>
+          Add appointment
+        </button>
       </div>
+  </div>
+</div>
+</div>
 
-      <div class="card">
-        <div class="card-header">
-        FIND DONOR AND DONATION HISTORY
-        </div>
-        <div class="card-body">
-            <div class="dropdown show">
-                <a id="fetchhistory" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Blood donation history
-                </a>
-              </div>
-            </div>
-        </div>
+<br></br>
+
+<div class="card">
+  <div class="card-header">
+    FIND DONOR AND DONATION HISTORY
+  </div>
+  <div class="card-body">
+    <div class="dropdown show">
+      <a id="fetchhistory" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Blood donation history
+      </a>
+    </div>
+  </div>
+</div>
+</div>
+
+<br></br>
+
+<div class="card">
+  <div class="card-header">
+    FIND DONORS BY BLOODTYPE
+  </div>
+  <div class="card-body">
+    <div class="dropdown show">
+      <div id="location" class="form-group mx-sm-3 mb-2">
+        <label for="exampleFormControlInput1">Location</label>
+        <input type="location" class="form-control" id="exampleFormControlInput1" placeholder="">
       </div>
-
-      <div class="card">
-        <div class="card-header">
-         FIND DONORS BY BLOODTYPE
-        </div>
-        <div class="card-body">
-            <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Search for donors by blood type
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="#">A+</a>
-                  <a class="dropdown-item" href="#">A-</a>
-                  <a class="dropdown-item" href="#">B+</a>
-                  <a class="dropdown-item" href="#">B-</a>
-                  <a class="dropdown-item" href="#">O+</a>
-                  <a class="dropdown-item" href="#">O-</a>
-                  <a class="dropdown-item" href="#">AB+</a>
-                  <a class="dropdown-item" href="#">AB-</a>
-                </div>
-              </div>
-              </div>
-                </a>
-        </div>
+      <div id="bloodtype" class="form-group mx-sm-3 mb-2">
+        <label for="exampleFormControlSelect1">Bloodtype</label>
+        <select class="form-control" id="exampleFormControlSelect1"></select>
       </div>
-
-      <div class="card">
-        <div class="card-header">
-       DELETE DONOR ACCOUNT
-        </div>
-        <div class="card-body">
-           <input type="hidden" id="selectedItemId" value="<id of your selected item>">
-            <button type="button" class="btn btn-light" id="delete-donor-account">Delete donor account</button>
-                    <ul class="list-group" id="update-if-attended-appointment"></ul>
-            </div>
-        </div>
+      <button id="bloodlocation" type='search' value='Search'>
+        Search
+      </button>
+    </div>
+  </div>
+  </a>
+</div>
+</div>
+<br></br>
+<div class="card">
+  <div class="card-header">
+    DELETE DONOR ACCOUNT
+  </div>
+  <div class="form-group">
+    <label for="username">Donor number</label>
+    <input type="username" class="form-input" id="deleteDonorNum" aria-describedby="usernameHelp" placeholder="Enter Donor number" />
+    <small id="donornumber" class="form-text text-muted"></small>
+      <div class="card-body">
+        <input type="hidden" id="selectedItemId" value="<id of your selected item>">
+        <button type="button" class="btn btn-light" id="delete-donor-account">Delete donor account</button>
+        <ul class="list-group" id="update-if-attended-appointment"></ul>
       </div>
+  </div>
+</div>
 
 
 
-<header>      
-      <h1>Administrator Dashboard</h1>
-      <div class="d-grid  d-md-flex justify-content-md-end">
-        <button class="btn btn-primary me-md-2" id="logout" type="button">Logout</button>
-        </div>
-  </header>
 
-
-    <ul class="nav flex-column" style="margin-top: 10px; padding-top: 75px">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Search for donor
-        </a>
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Search by blood type
-          </a>
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Blood Statistics By Location
-          </a>
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Add Appointment
-          </a>
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Update Donor Account
-          </a></li></ul>
-
-
-<script src="./js/adminDash.js"></script>
-
+<script src="js/admin.js"></script>

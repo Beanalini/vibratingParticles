@@ -1,196 +1,136 @@
 // List all the Donors
+const donerIDInput = document.querySelector('#donerID')
 const fetchDonorBtn = document.querySelector('#fetchdonor')
+const fetchUpdateAppointmentBtn = document.querySelector('#update-appointment')
+const fetchDeleteBtn = document.querySelector('#delete-donor-account')
 const result = document.querySelector('#donorresults')
 const fetchhistoryBtn = document.querySelector('#fetchhistory')
 const appointmentHistory = document.querySelector('#appointmenthist')
 
-const donorData = function() {
-  console.log('inside donordata function')
-fetch('/api/adminDash/donorId', {
-  method: 'GET', 
-  headers: {
-    'Content-Type': 'application/json',
-  },
-})
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-    let div = document.createElement('div')
-    let newContent = document.createTextNode(JSON.stringify(data))
-    div.appendChild(newContent)
-    result.appendChild(div)
+const donorData = function () {
+  console.log(donerIDInput.value);
 
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
-}
-  fetchDonorBtn.addEventListener('click', donorData)
-
-  //Add new appointment using Donor number.
-  const addAppointment = (appointment) =>
- 
-  fetch('/api/adminDash/newAppointment', {
-    method: 'POST',
+  fetch(`/api/adminDash/donor/${donerIDInput.value}`, {
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(appointment),
   })
+    .then((response) => response.json())
+    .then((data) => {
+      const formDoner = document.querySelector('#form-doner')
+
+      if (data.length) {
+        for (let index = 0; index < data.length; index++) {
+          let ul = document.createElement("ul");
+
+          for (const key in data[index]) {
+            if (Object.hasOwnProperty.call(data[index], key)) {
+              let li = document.createElement('li')
+              li.appendChild(document.createTextNode(`${key}: ${data[index][key]}`))
+              ul.appendChild(li)
+            }
+          }
+
+          formDoner.appendChild(ul);
+          formDoner.appendChild(document.createElement("hr"));
+        }
+      }
+    })
+    .catch((error) => {
+      console.log(error)
+      console.error('Error:', error);
+    });
+}
+
+fetchDonorBtn.addEventListener('click', donorData)
+
+// Update donor account to show that they attended appointment
+
+const updateAppointment = function () {
+  const donerNumber = document.querySelector('#donerNumber').value
+  const date = document.querySelector('#donerDate').value
+  const attended = document.querySelector('#has_attended').checked
+
+  fetch(`/api/adminDash/appointment/${donerNumber}`, {
+    method: 'PUT',
+    body: JSON.stringify({
+      date: date,
+      attended: attended,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => {
+      // Succuss then show message here with js 
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+fetchUpdateAppointmentBtn.addEventListener('click', updateAppointment)
+
+
+//Add new appointment using Donor number.
+
+async function newAppointment(event) {
+  event.preventDefault();
+
+  const donorNumberinput = document.querySelector('#donor_number').value;
+  const dateInput = document.querySelector('#date').value;
+  const timeInput = document.querySelector('#time').value;
+
+  const responce = await fetch('/api/adminDash/newAppointment', {
+    method: 'POST',
+    body: JSON.stringify({
+      dish_name,
+      description,
+      guest_name,
+      has_nuts,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+
     .then((res) => res.json())
     .then((data) => {
       console.log('Successful POST request:', data);
       return data;
     })
-    .catch((error) => {
-      console.error('Error in POST request:', error);
-    });
+  if (response.ok) {
+    document.location.replace('/');
+  } else {
+    alert('Failed to add appointment');
+  }
+}
 
-reviewForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  
-  const addAppointment = {
-    donor_num: userNameInput.value.trim(),
-    date: productInput.value.trim(),
-    time: reviewInput.value.trim(),
-  };
-
-  postAppointment(newAppointment)
-    .then((data) => alert(`New appointment added!`))
-    .catch((err) => console.error(err));
-});
+// console.log(document.querySelector("#add-appointment"));
+// document.querySelector("#add-appointment").addEventListener('submit', newFormHandler);
 
 // List all donors and appointment history
 
+// Update donor account to show that they attended appointment
 
 
-const appointmentHist = function() {
-fetch('/api/adminDash/histLoc', {
-  method: 'GET', 
-  headers: {
-    'Content-Type': 'application/json',
-  },
-})
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-    let div = document.createElement('div')
-    let newContent = document.createTextNode(JSON.stringify(data))
-    div.appendChild(newAppointment)
-    result.appendChild(div)
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
-}
+// Get donors by blood type and location
 
-//fetchhistoryBtn.addEventListener('click', appointmentHist)
-
-// List all Donors using bloodtype and location 
-
-//const fetchhistoryBtn = document.querySelector('#fetchhistory')
-//const appointmentHistory = document.querySelector('#appointmenthist')
-
-const bloodtype = function() {
-fetch('/adminData/bloodType', {
-  method: 'GET', 
-  headers: {
-    'Content-Type': 'application/json',
-  },
-})
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-    let div = document.createElement('div')
-    let newContent = document.createTextNode(JSON.stringify(data))
-    div.appendChild(alldonors)
-    result.appendChild(div)
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
-}
 
 // Delete Donor
+const deleteDonor = function () {
+  const donorNumberinput = document.querySelector('#deleteDonorNum').value;
 
-const deleteMethod = function() {
-  fetch('/api/adminDash/donorId',{
-  method: 'DELETE',
-  headers: {
-   'Content-type': 'application/json; charset=UTF-8' 
-  },
-
- })
-
- fetch(url, deleteMethod) 
- .then(response => response.json())
- .then(data => console.log(data)) 
- .catch(err => console.log(err)) 
+  fetch(`/api/adminDash/deleteAccount/${donorNumberinput}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json',
+    },
+  })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 }
-  //    // if ('Search for blood type') {
 
-  //       const response = await fetch('/api/donor', {
-  //         method: 'GET',
-  //         body: JSON.stringify({ 
-  //             id,
-  //             donor_num,
-  //             first_name,
-  //             last_name,
-  //             contact_num,
-  //             email,
-  //             blood_type 
-  //         }),
-  //         headers: { 'Content-Type': 'application/json' },
-  //       });
-  //     }
-
-  //     if ('Blood statistics by location') {
-  //       const response = await fetch('/api/donor', {
-  //         method: 'GET',
-  //         body: JSON.stringify({ 
-  //           location,
-  //           blood_type,
-  //           amount_donated
-  //         }),
-  //         headers: { 'Content-Type': 'application/json' },
-  //       });
-  //     }
-
-  //     if ('Add appointment') {
-  //       const response = await fetch('/api/donor', {
-  //         method: 'POST',
-  //         body: JSON.stringify({ 
-  //           first_name,
-  //           last_name,
-  //           date,
-  //           location 
-  //         }),
-  //         headers: { 'Content-Type': 'application/json' },
-  //       });
-  //     }
-
-  //     if ('Update donor account') {
-  //       const response = await fetch('/api/donor', {
-  //         method: 'UPDATE',
-  //         body: JSON.stringify({ 
-  //           id,
-  //           donor_num,
-  //           first_name,
-  //           last_name,     
-  //           location,
-  //           password,
-  //           contact_num,
-  //           sex,      
-  //           dob,
-  //           age,
-  //           email,
-  //           blood_type
-  //         }),
-  //         headers: { 'Content-Type': 'application/json' },
-  //       });
-  //     }
-    
-  // }
-
-
+fetchDeleteBtn.addEventListener('click', deleteDonor)
