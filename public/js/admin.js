@@ -112,27 +112,6 @@ async function newAppointment(event) {
 
 // List all donors and appointment history
 
-const appointmentHist = function () {
-  fetch('/api/adminDash/histLoc', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      let div = document.createElement('div')
-      let newContent = document.createTextNode(JSON.stringify(data))
-      div.appendChild(newAppointment)
-      result.appendChild(div)
-    })
-    .catch((error) => {
-      console.log(error);
-      console.error('Error:', error);
-    });
-}
-
 // Update donor account to show that they attended appointment
 
 
