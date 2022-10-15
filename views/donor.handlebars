@@ -1,9 +1,8 @@
 
 
-
-
     <header>      
-      <h1> Donor Dashboard</h1>
+      <h1> Donor Dashboard </h1>
+      <h3>Welcome {{donor_fname}} {{donor_lname}} {{first_name}} {{last_name}}</h3>
       <div class="d-grid  d-md-flex justify-content-md-end">
         <button class="btn btn-primary me-md-2" id="logout" type="button">Logout</button>
         </div>
@@ -11,24 +10,82 @@
 
     {{!-- Put name and date of birth in and change cards  --}}
 
-    <ul class="nav flex-column" style="margin-top: 10px; padding-top: 75px">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">View My Details
-      </a>
-      <li class="nav-item">
-          <a class="nav-link active" href="#">Update Details
-        </a>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Appointment History
-        </a>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">View Next Appointment
-        </a>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Blood Donation Record
-        </a>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">View Blood Type
-        </a></li></ul>
+    
+    
+    <div class="card" style="width: 18rem;">      
+      <div class="card-body">
+        <h5 class="card-title">Donor Details </h5>
+         <p class="card-text">View Contact Details</p>
+        <a class="btn btn-primary" href="/donordata" role="button">View</a>       
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">First name:   {{first_name}}</li>
+        <li class="list-group-item">Last name:    {{last_name}}</li>
+        <li class="list-group-item">Location:     {{location}}</li>
+        <li class="list-group-item">Gender:       {{sex}}</li>
+        <li class="list-group-item">Mobile:        {{contact_num}}</li>
+        <li class="list-group-item">Email:        {{email}}</li>
+      </ul>
+      <div class="card-body">
+       
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">      
+      <div class="card-body">
+        <h5 class="card-title">Next Appointment</h5>
+         <p class="card-text"></p>
+        <a class="btn btn-primary" href="/nextappointment" role="button">View</a>       
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Date:   {{date}}</li>
+        <li class="list-group-item">Time:    {{time}}</li>
+        <li class="list-group-item">Location: {{location}}</li>        
+      </ul>      
+    </div>
+    <div class="card" style="width: 18rem;">      
+      <div class="card-body">
+        <h5 class="card-title">Amount of blood donoted</h5>
+         <p class="card-text"></p>
+        <a class="btn btn-primary" href="/donorbloodDonated" role="button">View</a>       
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Your blood type is:   {{blood_type}}</li>
+        <li class="list-group-item">Amount donated to-date:    {{amount_donated}}</li>        
+      </ul>      
+    </div>
+    <div class="card" style="width: 18rem;">    
+      <div class="card-body">
+        <h5 class="card-title">Delete Account</h5>
+         <p class="card-text"></p>
+        <button class="btn btn-warning me-md-2" id="deleteAccount" type="button">Delete</button>    
+      </div>     
+    </div>
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header">
+                
+            </div>
+            <div class="card-body">   
+                <h3 class="card-title text-center">Donor Details</h3>             
+                
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-header">              
+            
+          </div>
+        </div>
+     </div>
+    
+    
 
 <script src="./js/donorDash.js"></script>
