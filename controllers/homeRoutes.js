@@ -45,18 +45,39 @@ router.get('/', async (req, res) => {
 //serve donor dashboard page
   router.get('/donor', async (req, res) => {    
     try {
-      // Find the logged in user based on the session ID
-      console.log("in donor homeroutes");
-      console.log(req.session.user_id)
+      // Find donor data
+
       const donorData = await Donor.findByPk(req.session.user_id, {
-        attributes:  [ ['first_name','donor_fname'], ['last_name', 'donor_lname']] ,
-        
+        attributes: { exclude: ['password'] }
+        });
+        // Serialize data so the template can read it
+        const donor = donorData.get({ plain: true });
+
+      // Find appointment data
+      const startDate = new Date();
+      const endDateTemp = new Date();
+      endDateTemp.setDate(endDateTemp.getDate() + 112)
+      const endDate = new Date(endDateTemp);
+
+      const appointmentData = await Appointment.findOne({ 
+        where: {
+          date: {
+            [Op.between]: [startDate, endDate]
+          },
+          donor_id: {
+            [Op.eq]: req.session.user_id
+          }
+        },
+    
       });
-      console.log(donorData);
-      const donor = donorData.get({ plain: true });
-      console.log(donor);
+      const appointment = appointmentData.get({ plain: true})
+
+
+      // Find total blood donated
+
       res.render('donor', {
         ...donor,
+        ...appointment,
         logged_in: true
       });
     } catch (err) {
@@ -100,6 +121,58 @@ router.get('/', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+router.get('/donordata', async (req, res) => {
+  console.log("inside home routes: get donor details");
+  console.log(req.session.user_id);
+try {
+  const donorData = await Donor.findByPk(req.session.user_id, {
+    attributes: { exclude: ['password'] }
+    });
+    console.log(donorData);
+    // Serialize data so the template can read it
+    const donor = donorData.get({ plain: true });
+  console.log("serialised");  
+  console.log(donor);
+  // Pass serialized data and session flag into template
+  //res.status(200).json(donorData);
+    res.render('donor', {
+      ...donor,
+      logged_in: true
+    });
+  
+  
+} catch (err) {
+  res.status(500).json(err);
+}
+});
+
+router.get('/nextAppointment', withAuth, async (req, res) => {
+  try {
+      const startDate = new Date();
+      const endDateTemp = new Date();
+      endDateTemp.setDate(endDateTemp.getDate() + 112)
+      const endDate = new Date(endDateTemp);
+
+      const appointmentData = await Appointment.findOne({ 
+        where: {
+          date: {
+            [Op.between]: [startDate, endDate]
+          },
+          donor_id: {
+            [Op.eq]: req.session.user_id
+          }
+        },
+    
+      });
+      const appointment = appointmentData.get({ plain: true})
+
+      console.log(appointment);
+      res.render('donor', { ...appointment, logged_in: true }) 
+    } catch (err) {
+      res.status(500).json(err);
+    }
 });
 
 
