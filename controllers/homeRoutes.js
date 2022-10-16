@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
-const { Donor, Appointment } = require('./../models');
+const { Donor, Appointment, Admin } = require('./../models');
 const { Op } = require("sequelize");
 
 //serve homepage
@@ -86,15 +86,27 @@ router.get('/', async (req, res) => {
   });
 
   //serve admin dashboard page
-  router.get('/admin', (req, res) => {    
-    if (req.session.logged_in) {
-      console.log("serve admin point 1");
+  router.get('/admin', async (req, res) => {    
+    
+      try {
+        // Find the logged in user based on the session ID
+        console.log("in admin homeroutes");
+        console.log(req.session.user_id)
+        const adminData = await Admin.findByPk(req.session.user_id, {
+          attributes:  ['first_name','last_name', 'role'] ,
+          
+        });
+        console.log(adminData);
+        const admin = adminData.get({ plain: true });
+        console.log(admin);
+        res.render('admin', {
+          ...admin,
+          logged_in: true
+        });
+      } catch (err) {
+        res.status(500).json(err);
+      }    
 
-      res.render('admin');
-      return;
-    }
-    console.log("serve admin point 2");
-    res.render('admin');
   });
 
 

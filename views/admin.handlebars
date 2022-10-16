@@ -1,18 +1,16 @@
 <header><h1 class="text-center" id="dashboard">Administrator Dashboard</h1>
-  <form>
-    <div id="adminname" class="form-group mx-sm-3 mb-2">
-      <label for="exampleFormControlInput1">Name</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-    </div>
-    <div id="Role" class="form-group mx-sm-3 mb-2">
-      <label for="exampleFormControlSelect1">Role</label>
-      <select class="form-control" id="exampleFormControlSelect1"></select>
-    </div>
+<div class="card">
+ 
+  <div class="card-body">
+    <h3 class="text-dark text-dark">Administrator Details</h3>
+    <hr>
+    <h5 class="card-title text-dark">Name: {{first_name}} {{last_name}}</h5>
+    <h5 class="card-title text-dark">Role: {{role}} </h5>
     <div class="d-grid  d-md-flex justify-content-md-end">
       <button class="btn btn-primary me-md-2" id="logout" type="button">Logout</button>
     </div>
-    <br></br>
-  </form>
+  </div>
+</div>  
 </header>
 <br></br>
 
