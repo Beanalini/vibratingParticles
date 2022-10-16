@@ -45,6 +45,50 @@ const donorDelete = async () => {
   document.querySelector('#deleteAccount').addEventListener('click', donorDelete);
   /********************************************************************************************** */
       
+  const baseUrl = "http://localhost:3001/api/donorDash";
+  const userDataExtention = "/data";
+  const userNextAppointmentExtention = "/nextappointment";
+  const userAppointmentHistoryExtention = "/appointmentHist";
+  const userBloodDonatedExtention = "/bloodDonated";
+  
+//   let donorData = baseUrl + userDataExtention;
+//   let donorAppointment = baseUrl + userNextAppointmentExtention;
+//   let donorHistory = baseUrl + userAppointmentHistoryExtention;
+//   let donorBlood = baseUrl + userBloodDonatedExtention;
+
+  const appointmentHist = async () => {
+    const response = await fetch('/api/donorDash/appointmentHist', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+  
+    if (response.ok) {
+      //render homepage
+      console.log("Data");
+      console.log(response);
+      console.log(response.statusText);
+      console.log(response.donorData);
+      alert(response.message);     
+      console.log(response.user);
+      
+    } else {
+      alert(response.statusText);
+    }
+  };
+  
+  document.querySelector('#History').addEventListener('click', appointmentHist);
+  
+  
+
+
+  
+
+
+
+
+
+
+
 
 /*!!!!!!!these are not used here they're for the controller section  !!!!!
   // requiring route bits

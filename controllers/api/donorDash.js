@@ -101,12 +101,13 @@ router.get('/appointmentHist', withAuth, async (req, res) => {
               }
             },
           });
-        
-        const donors = donorData.map((donor) =>
-        donor.get({ plain: true})
-        );
-        res.render('donor', { donors })
-        res.status(200).json(donorData);
+          console.log(donorData);
+        // const donors = donorData.map((donor) =>
+        // donor.get({ plain: true})        
+        // );
+        // res.render('donor', { donors })
+        // res.status(200).json(donorData);
+        res.json({ user: donorData, message: "donorHistory"});
 
     } catch (err) {
       res.status(500).json(err);
