@@ -45,19 +45,19 @@ const donorDelete = async () => {
   document.querySelector('#deleteAccount').addEventListener('click', donorDelete);
   /********************************************************************************************** */
       
-  const baseUrl = "http://localhost:3001/api/donorDash";
-  const userDataExtention = "/data";
-  const userNextAppointmentExtention = "/nextappointment";
-  const userAppointmentHistoryExtention = "/appointmentHist";
-  const userBloodDonatedExtention = "/bloodDonated";
+//   const baseUrl = "http://localhost:3001/api/donorDash";
+//   const userDataExtention = "/data";
+//   const userNextAppointmentExtention = "/nextappointment";
+//   const userAppointmentHistoryExtention = "/appointmentHist";
+//   const userBloodDonatedExtention = "/bloodDonated";
   
-// let donorData = baseUrl + userDataExtention;
-  let donorAppointment = baseUrl + userNextAppointmentExtention;
-  let donorHistory = baseUrl + userAppointmentHistoryExtention;
-  let donorBlood = baseUrl + userBloodDonatedExtention;
+// // let donorData = baseUrl + userDataExtention;
+//   let donorAppointment = baseUrl + userNextAppointmentExtention;
+//   let donorHistory = baseUrl + userAppointmentHistoryExtention;
+//   let donorBlood = baseUrl + userBloodDonatedExtention;
 
   const appointmentHist = async () => {
-    const response = await fetch('/api/donorDash/appointmentHist', {
+    const response = await fetch('/api/donorDash/nextappointment', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
@@ -65,11 +65,8 @@ const donorDelete = async () => {
     if (response.ok) {
       //render homepage
       console.log("Data");
-      console.log(response);
-      console.log(response.statusText);
-      console.log(response.donorData);
       alert(response.message);     
-      console.log(response.user);
+      console.log(response);
       
     } else {
       alert(response.statusText);
@@ -77,6 +74,44 @@ const donorDelete = async () => {
   };
   
   document.querySelector('#History').addEventListener('click', appointmentHist);
+
+  // const donorData = function () {
+  //   console.log(donerIDInput.value);
+  
+  //   fetch(`/api/adminDash/donor/${donerIDInput.value}`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       const formDoner = document.querySelector('#form-doner')
+  
+  //       if (data.length) {
+  //         for (let index = 0; index < data.length; index++) {
+  //           let ul = document.createElement("ul");
+  
+  //           for (const key in data[index]) {
+  //             if (Object.hasOwnProperty.call(data[index], key)) {
+  //               let li = document.createElement('li')
+  //               li.appendChild(document.createTextNode(`${key}: ${data[index][key]}`))
+  //               ul.appendChild(li)
+  //             }
+  //           }
+  
+  //           formDoner.appendChild(ul);
+  //           formDoner.appendChild(document.createElement("hr"));
+  //         }
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error)
+  //       console.error('Error:', error);
+  //     });
+  // }
+  
+  // fetchDonorBtn.addEventListener('click', donorData)
   
   
 

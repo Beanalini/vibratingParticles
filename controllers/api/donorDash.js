@@ -45,8 +45,6 @@ router.get('/', async (req, res) => {
 //This range was chosen to capture the minimum allowed time between donation appointments, which is 12 weeks for men and 16 for women WORKING*/
 
 router.get('/nextappointment', withAuth, async (req, res) => {
-  
-  console.log("next app")
   try {
       const startDate = new Date();
       const endDateTemp = new Date();
@@ -56,28 +54,25 @@ router.get('/nextappointment', withAuth, async (req, res) => {
       console.log(startDate, endDate)
       console.log(startDate.toLocaleDateString(), endDate.toLocaleDateString())
 
-        const donorData = await Appointment.findByPk(req.session.user_id,{ 
+        const appointmentData = await Appointment.findOne({ 
           where: {
             date: {
               [Op.between]: [startDate, endDate]
+            },
+            donor_id: {
+              [Op.eq]: req.session.user_id
             }
           },
-        
+      
         });
-
-        const donors = donorData.map((donor) =>
-        donor.get({ plain: true})
-        );
-        res.render('donor', { donors })
-        res.status(200).json(donorData);
+        const appointment = appointmentData.get({ plain: true})
+        res.render('donor', { appointment }) 
+        res.status(200).json(appointmentData);
     } catch (err) {
       res.status(500).json(err);
     }
 });
 
-
-
-  
 
  
 
@@ -86,28 +81,24 @@ This could be changed to allow donor to select the range by passing a value in t
 router.get('/appointmentHist', withAuth, async (req, res) => {
       
   try {
-        const startDate = new Date();
-        const endDateTemp = new Date();
+        
+        const startDateTemp = new Date();
         endDateTemp.setDate(endDateTemp.getDate() - 365)
         const endDate = new Date(endDateTemp);
 
         console.log(startDate, endDate)
         console.log(startDate.toLocaleDateString(), endDate.toLocaleDateString())
 
-          const donorData = await Appointment.findByPk(req.session.user_id,{
-            where: {
-              date: {
-                [Op.between]: [startDate, endDate]
-              }
+          const appointmentData = await Appointment.findAll({where: {
+            date: {
+              [Op.between]: [startDate, endDate]
             },
-          });
-          console.log(donorData);
-        // const donors = donorData.map((donor) =>
-        // donor.get({ plain: true})        
-        // );
-        // res.render('donor', { donors })
-        // res.status(200).json(donorData);
-        res.json({ user: donorData, message: "donorHistory"});
+            donor_id: {
+              [Op.eq]: req.session.user_id
+            }
+          },});
+          console.log(appointmentData);
+          res.status(200).json(appointmentData);
 
     } catch (err) {
       res.status(500).json(err);

@@ -14,7 +14,7 @@
       <div class="card-body">
         <h5 class="card-title">Donor Details </h5>
          <p class="card-text">View Contact Details</p>
-        <a class="btn btn-primary" href="/donordata" role="button">View</a>       
+        {{!-- <a class="btn btn-primary" href="/donordata" role="button">View</a>        --}}
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">First name:   {{first_name}}</li>
@@ -28,11 +28,12 @@
        
       </div>
     </div>
+
     <div class="card" style="width: 18rem;">      
       <div class="card-body">
         <h5 class="card-title">Next Appointment</h5>
          <p class="card-text"></p>
-        <a id = "History" class="btn btn-primary" href="" role="button">View</a>       
+        {{!-- <a id = "viewAppHistory" class="btn btn-primary" href="/nextAppointment" role="button">View</a>        --}}
       </div>
       <ul class="list-group list-group-flush">
         <li id="date1" class="list-group-item">Date:   {{date}}</li>
@@ -40,11 +41,12 @@
         <li id="location1" class="list-group-item">Location: {{location}}</li>        
       </ul>      
     </div>
+
     <div class="card" style="width: 18rem;">      
       <div class="card-body">
         <h5 class="card-title">Amount of blood donoted</h5>
          <p class="card-text"></p>
-        <a class="btn btn-primary" href="/donorbloodDonated" role="button">View</a>       
+        {{!-- <a class="btn btn-primary" href="/donorbloodDonated" role="button">View</a>        --}}
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Your blood type is:   {{blood_type}}</li>
