@@ -51,10 +51,10 @@ const donorDelete = async () => {
   const userAppointmentHistoryExtention = "/appointmentHist";
   const userBloodDonatedExtention = "/bloodDonated";
   
-//   let donorData = baseUrl + userDataExtention;
-//   let donorAppointment = baseUrl + userNextAppointmentExtention;
-//   let donorHistory = baseUrl + userAppointmentHistoryExtention;
-//   let donorBlood = baseUrl + userBloodDonatedExtention;
+// let donorData = baseUrl + userDataExtention;
+  let donorAppointment = baseUrl + userNextAppointmentExtention;
+  let donorHistory = baseUrl + userAppointmentHistoryExtention;
+  let donorBlood = baseUrl + userBloodDonatedExtention;
 
   const appointmentHist = async () => {
     const response = await fetch('/api/donorDash/appointmentHist', {
