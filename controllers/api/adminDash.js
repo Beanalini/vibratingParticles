@@ -10,11 +10,6 @@ const withAuth = require('../../utils/auth');
 router.get('/data', async (req, res) => {
   try {
     const adminData = await Admin.findAll();
-
-    const admins = adminData.map((admin) =>
-    admin.get({ plain: true })
-  );
-    res.render('admin', { admins })
     res.status(200).json(adminData);
   } catch (err) {
     res.status(500).json(err);
@@ -26,15 +21,9 @@ router.get('/data', async (req, res) => {
 router.get('/adminData/bloodType', async (req, res) => {
     
   try {
-      const donorData = await Donor.findOne({
-        where: {
-          blood_type: req.body.blood_type,
-        }});
-
-      const donors = donorData.map((donor) =>
-      donor.get({ plain: true })
-    );
-      res.render('donor', { donors })
+      const donorData = await bloodType.findOne({
+        where: {id: req.query.bloodType,
+      }});
       res.render ('bloodtype', {bloodtype});
     } catch (err) {
       console.log(error);
@@ -52,10 +41,6 @@ router.get('/donor/:id', async (req, res) => {
       }
     });
 
-    const donors = donorData.map((donor) =>
-    donor.get({ plain: true })
-  );
-  res.render('donor', { donors })
     res.status(200).json(byDonorId);
   } catch (err) {
     res.status(500).json(err);
@@ -72,9 +57,7 @@ router.put('/appointment/:id', async (req, res) => {
       amount_donated: req.body.amount_donated
     },
     {
-      where: {
-        donor_id: req.params.id
-      }
+     my
     }) 
       res.status(200).json(updatedDonor);
   } catch (err) {
@@ -91,11 +74,6 @@ router.get('/Record', async (req, res) => {
       },
       attributes: [[sequelize.fn('SUM', sequelize.col('amount_donated')), 'total_donated']]
     })
-
-    const donors = donorData.map((donor) =>
-    donor.get({ plain: true })
-  );
-  res.render('donor', { donors })
     res.status(200).json(totalDonated);
   } catch (err) {
     res.status(500).json(err);
@@ -105,13 +83,14 @@ router.get('/Record', async (req, res) => {
 //TO DO: view patients donating today
 
 //TO DO: create new appointment
-router.post('/newAppointment', async (req, res) => {
+router.post('/newAppointment/:id', async (req, res) => {
+  console.log(req.body.donor_id);
   try {
     const newAppDate = await Appointment.create({
-      donor_num: req.body.donor_num,
+      donor_id: req.body.donor_id,
       date: req.body.date,
       time: req.body.time,
-  });
+  })
     res.status(200).json(newAppDate);
   } catch (err) {
     res.status(500).json(err);
@@ -158,15 +137,10 @@ router.get('/histLoc', withAuth, async (req, res) => {
  
   try {      
 
-    const donorData = await Donor.findAll({
-    include: [{
-        model: Appointment,  as: "appointments"}]
-    });
-
-    const donors = donorData.map((donor) =>
-    donor.get({ plain: true })
-  );
-    res.render('admin', { donors })
+       const donorData = await Donor.findAll({
+        include: [{
+            model: Appointment,  as: "appointments"}]
+        });
     res.status(200).json(donorData);
   } catch (err) {
     res.status(500).json(err);

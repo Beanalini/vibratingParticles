@@ -1,10 +1,4 @@
-<header>
-  <div class="d-grid  d-md-flex justify-content-md-end">
-      <button class="btn btn-Warning me-md-2" id="logout" type="button">Logout</button>
-    </div>
-  <span id="dashboard">Administrator Dashboard</span>
-<br>
- 
+<header><h1 class="text-center" id="dashboard">Administrator Dashboard</h1>
   <form>
     <div id="adminname" class="form-group mx-sm-3 mb-2">
       <label for="exampleFormControlInput1">Name</label>
@@ -14,7 +8,9 @@
       <label for="exampleFormControlSelect1">Role</label>
       <select class="form-control" id="exampleFormControlSelect1"></select>
     </div>
-   
+    <div class="d-grid  d-md-flex justify-content-md-end">
+      <button class="btn btn-primary me-md-2" id="logout" type="button">Logout</button>
+    </div>
     <br></br>
   </form>
 </header>
@@ -25,6 +21,7 @@
   <div class="card-header">
     SEARCH FOR DONOR
   </div>
+  <br></br>
   <div id="form-doner" class="form-group">
     <label for="username">Donor number</label>
     <input type="username" class="form-input" id="donerID" aria-describedby="usernameHelp"
@@ -72,18 +69,18 @@
     <form class="p-5 col-8" id="appointment-form">
       <div class="form-group">
         <label for="username">Donor number</label>
-        <input type="username" class="form-input" id="username" aria-describedby="usernameHelp"
+        <input type="username" class="form-input" id="donerNumberAdd" aria-describedby="usernameHelp"
           placeholder="Enter Donor number" />
-        <small id="donornumber" class=" form-text text-muted"></small>
+        <small id="donornumber2" class=" form-text text-muted"></small>
         <div class="form-group">
           <label for="Date">Product</label>
-          <input type="date" class="form-input" id="date" placeholder="date" />
+          <input type="date" class="form-input" id="product" placeholder="date" />
         </div>
         <div class="form-group">
           <label for="time">time</label>
           <input type="time" class="form-input" id="time" placeholder="time" />
         </div>
-        <button id="add-appointment" type='add_appointment' value='add_appointment'>
+        <button id="add-appointment" type="button">
           Add appointment
         </button>
       </div>
@@ -91,22 +88,6 @@
 </div>
 </div>
 
-<br></br>
-
-<div class="card">
-  <div class="card-header">
-    FIND DONOR AND DONATION HISTORY
-  </div>
-  <div class="card-body">
-    <div class="dropdown show">
-      <a id="fetchhistory" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Blood donation history
-      </a>
-    </div>
-  </div>
-</div>
-</div>
 
 <br></br>
 
@@ -137,6 +118,7 @@
   <div class="card-header">
     DELETE DONOR ACCOUNT
   </div>
+  <br></br>
   <div class="form-group">
     <label for="username">Donor number</label>
     <input type="username" class="form-input" id="deleteDonorNum" aria-describedby="usernameHelp" placeholder="Enter Donor number" />
@@ -152,4 +134,4 @@
 
 
 
-<script src="js/admin.js"></script>
+<script src="js/adminDash.js"></script>
