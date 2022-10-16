@@ -33,7 +33,7 @@ const donorDelete = async () => {
   
     if (response.ok) {
       //render homepage
-      console.log("Donor account has been deleted");
+      console.lHrog("Donor account has been deleted");
       alert("Your account has been deleted.  Thank you for donating");
       document.location.replace('/');
       
@@ -59,17 +59,22 @@ const donorDelete = async () => {
   const appointmentHist = async () => {
     const response = await fetch('/api/donorDash/appointmentHist', {
       method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    });
+      headers: { 'Content-Type': 'application/json' ,},
+    })
+    .then((response) => response.json())
+    .then((data) =>
+    const donorFrame  )
   
     if (response.ok) {
       //render homepage
+      res.render('donor', { donors });
       console.log("Data");
       console.log(response);
       console.log(response.statusText);
       console.log(response.donorData);
       alert(response.message);     
       console.log(response.user);
+      
       
     } else {
       alert(response.statusText);
