@@ -62,10 +62,10 @@ const donorDelete = async () => {
       headers: { 'Content-Type': 'application/json' ,},
     })
     .then((response) => response.json())
-    .then((data) =>
-    const donorFrame  )
+    console.log(response)
+    .then((data) => 
   
-    if (response.ok) {
+  { if (response.ok) {
       //render homepage
       res.render('donor', { donors });
       console.log("Data");
@@ -79,7 +79,7 @@ const donorDelete = async () => {
     } else {
       alert(response.statusText);
     }
-  };
+  })};
   
   document.querySelector('#History').addEventListener('click', appointmentHist);
   

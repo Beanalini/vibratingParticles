@@ -1,3 +1,8 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 
 body {
     background-color: rgb(99, 4, 4);
@@ -42,18 +47,31 @@ body {
       font-weight: 900;
     }
 
-    @media screen and (max-width: 393px) {
-
-
-
-    .login-menu {
-
-      max-width: 35px;
-
-      
-
+    .nowrap {
+      white-space: nowrap;
     }
 
-  }
 
-  @media screen and (max-width: 299px)
+    @media screen and (max-width: 399px) {
+/* 
+      #header-row {
+
+        max-width: 40vw;
+      } */
+
+      .btn-danger {
+
+        max-width: 25vw;
+        font-size: 10px;
+};
+
+.carousel-inner {
+
+  max-width: 20vw;
+  max-height: 50vh;
+}
+
+.
+
+
+
