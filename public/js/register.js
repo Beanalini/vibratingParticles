@@ -5,19 +5,21 @@ const postNewDonor = async (newDonor) => {
     const response = await fetch('/api/donor/', {
         method: 'POST',
         headers: { 
-            'Content-Type': 'application/json' 
+            'Content-Type': 'application/json', 
+            body: JSON.stringify(newDonor),
         },
-        body: JSON.stringify(newDonor),
+        
       });
 
       if (response.ok) {
         //the donor login process was succesful
         console.log(response.id);
-        document.location.replace('/donor');
+        document.location.replace('/login');
         alert(response.statusText);
       }
       else {
-        alert(response.statusText);
+        //alert(response.statusText);
+        document.location.replace('/login');
       }
         
     }
