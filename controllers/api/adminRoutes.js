@@ -32,6 +32,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = adminData.id;
       req.session.logged_in = true;
+      req.session.admin_user = true;
       console.log("saving admin session");
       
       res.json({ admin: adminData, message: 'You are now logged in!' });
