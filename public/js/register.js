@@ -13,7 +13,7 @@ const postNewDonor = async (newDonor) => {
       if (response.ok) {
         //the administrator login process was succesful
         console.log(response.id);
-        document.location.replace('/admin');
+        document.location.replace('/donor');
         alert(response.statusText);
       }
       else {
