@@ -26,11 +26,6 @@ router.get('/', async (req, res) => {
     res.render('register');
   });
 
-  router.get('/register', async (req, res) => {   
-   
-  });
-
-
   //serve login page 
   router.get('/login', (req, res) => {    
     if (req.session.logged_in) {
@@ -71,13 +66,23 @@ router.get('/', async (req, res) => {
     
       });
       const appointment = appointmentData.get({ plain: true})
+      //total amount of blood from all appointments for one donor
+      const donorBlood = await Appointment.sum('amount_donated' , {
+        where:{
+          donor_id:req.session.user_id
+        }
+                
+      }); 
 
+      const bloodtot = {blood: donorBlood}
 
+      console.log(donorBlood);
       // Find total blood donated
 
       res.render('donor', {
         ...donor,
         ...appointment,
+        ...bloodtot,
         logged_in: true
       });
     } catch (err) {
