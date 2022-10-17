@@ -61,9 +61,9 @@ router.get('/', async (req, res) => {
 
       const appointmentData = await Appointment.findOne({ 
         where: {
-          date: {
-            [Op.between]: [startDate, endDate]
-          },
+          // date: {
+          //   [Op.between]: [startDate, endDate]
+          // },
           donor_id: {
             [Op.eq]: req.session.user_id
           }
