@@ -56,24 +56,24 @@ const donorDelete = async () => {
 //   let donorHistory = baseUrl + userAppointmentHistoryExtention;
 //   let donorBlood = baseUrl + userBloodDonatedExtention;
 
-  const appointmentHist = async () => {
-    const response = await fetch('/api/donorDash/nextappointment', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    });
+  // const appointmentHist = async () => {
+  //   const response = await fetch('/api/donorDash/nextappointment', {
+  //     method: 'GET',
+  //     headers: { 'Content-Type': 'application/json' },
+  //   });
   
-    if (response.ok) {
-      //render homepage
-      console.log("Data");
-      alert(response.message);     
-      console.log(response);
+  //   if (response.ok) {
+  //     //render homepage
+  //     console.log("Data");
+  //     alert(response.message);     
+  //     console.log(response);
       
-    } else {
-      alert(response.statusText);
-    }
-  };
+  //   } else {
+  //     alert(response.statusText);
+  //   }
+  // };
   
-  document.querySelector('#History').addEventListener('click', appointmentHist);
+  // document.querySelector('#History').addEventListener('click', appointmentHist);
 
   // const donorData = function () {
   //   console.log(donerIDInput.value);
