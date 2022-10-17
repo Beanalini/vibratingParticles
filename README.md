@@ -151,3 +151,9 @@ Copyright 2022 Debra Constantinou, Joseph Balshaw, Haruka Hashimoto, Amal Hirsi 
   
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
   
+  ## Deployment
+  
+ Github repo - https://github.com/Beanalini/vibratingParticles
+ 
+ Heroku deployment - https://morning-spire-90802.herokuapp.com/
+  
