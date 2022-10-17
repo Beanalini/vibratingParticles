@@ -33,7 +33,7 @@ router.get('/', async (req, res) => {
   });
 
 //serve donor dashboard page
-  router.get('/donor', withAuth, async (req, res) => {    
+  router.get('/donor', async (req, res) => {    
     try {
       // Find donor data
 
