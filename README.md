@@ -2,18 +2,18 @@
   
   ## Table of Contents
   * [Set Project Requirements](#set-project-requirements)
-  * [Description](#description)
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Walk Through Video](#walk-through-video)
   * [Screen Shots](#screen-shots)
   * [Tests](#tests)
+  * [Ideas for future development] (#Ideas for future development)
   * [Technologies Used](#technologies-used)  
   * [Questions](#questions)
   * [How to Contribute](#How-to-Contribute)   
   * [License](#license)
+  * [Deployment](#deployment)
   
-  # National Blood Bank
+  # Bleed for me
   
   ## Set Project Requirements
   
@@ -78,21 +78,30 @@ WHEN I open the application I want to be able to
 
 - Following this navigate to http://localhost:3001/ and begin exploring the application. Here you will find you can create a donor account and will then be greeted with the donor dashboard.
   
- - [NEEDS FINISHING]
+ - Alternatively, you can use a hard coded donor log in using the seed data in the donorData.json to log in as a donor which is found in the adminData.json in the seeds folder of the repository. 
  
- ## Walk Through Video
+ - The application also provides the support to log in as an administrator - to do this you can use the hard coded administrator data in the "adminData.json" file in the seeds folder of the repository.
+ 
 
-   Click on the link below to view a walk-through video demonstrating the  application's functionality.
-
-   - [Link to  walk-through video](https://)
 
    
 
-  ## Screen Shots
+  ## Screenshots
 
 ![image](https://user-images.githubusercontent.com/88617634/195981870-0f748b16-0d65-412c-a416-3c2f90cfbb61.png)
 
 ![image](https://user-images.githubusercontent.com/88617634/195981885-e1cd7b55-2a7c-477b-bf6f-5847545cd549.png)
+
+ ![image](https://user-images.githubusercontent.com/88617634/196269246-24a5a26e-53f4-44cd-be92-dc2b7d62fcfd.png)
+ 
+ ![image](https://user-images.githubusercontent.com/88617634/196271038-62c90e93-ab0a-459f-919f-a3b583bcf6dc.png)
+ 
+ ![image](https://user-images.githubusercontent.com/88617634/196272239-bd840656-5a37-4671-afcf-96565d5b48d1.png)
+ 
+ ![image](https://user-images.githubusercontent.com/88617634/196272807-350c8d51-858d-45f8-acd6-831529f060f5.png)
+
+
+
 
   ## Tests
   
@@ -112,6 +121,16 @@ WHEN I open the application I want to be able to
   - handlebars
   - mustache
   - bcrypt
+  
+  ## Ideas for future development
+  
+  - If we had more time to implement more features we would implement the following: 
+  
+  - Integrate a booking system.
+  
+  - We would secure our administrator access using security tokens
+  
+  - We would give administrators the ability to generate an automated email to email a donor for the timing of their next donation.
   
     
  
@@ -151,9 +170,10 @@ Copyright 2022 Debra Constantinou, Joseph Balshaw, Haruka Hashimoto, Amal Hirsi 
   
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
   
-  ## Deployment
+## Deployment
   
  Github repo - https://github.com/Beanalini/vibratingParticles
  
  Heroku deployment - https://morning-spire-90802.herokuapp.com/
+
   
