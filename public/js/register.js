@@ -14,12 +14,12 @@ const postNewDonor = async (newDonor) => {
       if (response.ok) {
         //the donor login process was succesful
         console.log(response.id);
-        document.location.replace('/login');
+        document.location.replace('/donor');
         alert(response.statusText);
       }
       else {
-        //alert(response.statusText);
-        document.location.replace('/login');
+        alert(response.statusText);
+        //document.location.replace('/donor');
       }
         
     }
