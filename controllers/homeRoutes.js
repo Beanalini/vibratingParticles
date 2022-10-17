@@ -28,17 +28,12 @@ router.get('/', async (req, res) => {
 
   //serve login page 
   router.get('/login', (req, res) => {    
-    if (req.session.logged_in) {
-      console.log("serve login point 1");
-      res.render('login');
-      return;
-    }
-    console.log("serve login point 2");
+    
     res.render('login');
   });
 
 //serve donor dashboard page
-  router.get('/donor', async (req, res) => {    
+  router.get('/donor', withAuth, async (req, res) => {    
     try {
       // Find donor data
 
@@ -91,7 +86,7 @@ router.get('/', async (req, res) => {
   });
 
   //serve admin dashboard page
-  router.get('/admin', async (req, res) => {    
+  router.get('/admin', withAuth, async (req, res) => {    
     
       try {
         // Find the logged in user based on the session ID
