@@ -67,7 +67,7 @@ const donorDelete = async () => {
 
   
 
-  function viewnextAppt () {
+  /*function viewnextAppt () {
     if (viewnextapptBtn.clicked === true) {
         fetch ('/api/donorDash/appointmentNext')
         .then((response) => {
@@ -84,9 +84,10 @@ const donorDelete = async () => {
         let attended = document.createElement('li');
         let amountDonated = document.createElement('li');
 
-        date.textContent = date
+        date.textContent = date;
+      }
 
-    }};
+  };
 
         
     
@@ -101,4 +102,4 @@ function bloodRecord ()  {
         }
         
       }
-    }
+    };*/
