@@ -87,7 +87,7 @@ const updateAppointment = function () {
     },
   })
     .then((response) => {
-      alert("Update was successful");
+      alert("The update was successful");
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -116,7 +116,7 @@ const newAppointment = function() {
     },
   })
   .then((response) => {
-    alert("New appointment has been added");
+    alert("The new appointment has been added");
   })
   .catch((error) => {
     console.error('Error:', error);
